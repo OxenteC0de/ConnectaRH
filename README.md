@@ -61,6 +61,7 @@ cd ConnectaRH
 ### 2. Instalar as dependências
 npm install
 
+
 ### 3. Configurar o banco de dados
 
 No arquivo data-source.ts ou app.module.ts, configure suas credenciais:
@@ -77,21 +78,24 @@ TypeOrmModule.forRoot({
 }),
 ```
 
-
 ⚠️ Dica: Crie o banco no PostgreSQL antes de rodar o projeto.
+
 
 ### 4. Rodar o projeto
 npm run start:dev
 
-
 O servidor estará disponível em:
 👉 http://localhost:4000
+
+---
 
 ### ✅ Testes
 
 Utilize o Insomnia (ou Postman) para testar as rotas.
 
 Já existe um arquivo de workspace do Insomnia (insomnia.json) dentro da pasta /docs → basta importar e clicar em Send (os testes já estão preenchidos).
+
+---
 
 ### 👥 Equipe Responsável
 
