@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Colaborador } from '../entities/colaborador.entity';
 import { Repository } from 'typeorm';
+import { DeleteResult } from 'typeorm/browser';
 
 @Injectable()
 export class ColaboradorService {
@@ -10,12 +11,24 @@ export class ColaboradorService {
     private colaboradorRepository: Repository<Colaborador>,
   ) {}
 
-  async findAll(): Promise<Colaborador[]>{
+  async findAll(): Promise<Colaborador[]> {
     return await this.colaboradorRepository.find();
   }
+    // async findById(id: number): Promise<Colaborador> {
+    //   const colaborador = await this.colaboradorRepository.findOne({
+    //     where: { id },
+    //   });
+    //   if (!colaborador) {
+    //     throw new HttpException(
+    //       'Colaborador não foi localizado!',
+    //       HttpStatus.NOT_FOUND,
+    //     );
+    //     return colaborador;
+    //   }
+    // }
 
   // async delete(id: number): Promise<DeleteResult> {
   //   await this.findById(id);
-  //   return await this.collaboradorRepository.delete(id);
+  //   return await this.colaboradorRepository.delete(id);
   // }
 }

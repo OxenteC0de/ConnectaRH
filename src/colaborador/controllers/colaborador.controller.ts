@@ -1,5 +1,5 @@
 import { ColaboradorService } from '../services/colaborador.service';
-import { Controller, Get, HttpCode, HttpStatus } from "@nestjs/common";
+import { Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe } from "@nestjs/common";
 import { Colaborador} from '../entities/colaborador.entity';
 
 @Controller('/colaboradores')
@@ -11,9 +11,21 @@ export class ColaboradorController {
     findAll(): Promise<Colaborador[]>{
         return this.colaboradorService.findAll();
     }
-  // @Delete('/:id')
-  // @HttpCode(HttpStatus.NO_CONTENT)
-  // delete(@Param('id', ParseIntPipe) id: number) {
-  //   return this.colaboradorService.delete(id)
-  // }
+    
+  //   @Get(':id')
+  //   async findByid(@Param('id')id: string): Promise<Colaborador>{
+  //       return wait this.colaboradorService.findById(Number(id));
+  // } 
+  
+    // @Put()
+    // @HttpCode(HttpStatus.ok)
+    // update(@Body() collaborador: Colaborador): Promise<Colaborador> {
+    //     return this.colaboradorService.update(collaborador);
+    // } 
+  
+    // @Delete('/:id')
+    // @HttpCode(HttpStatus.NO_CONTENT)
+    // delete(@Param('id', ParseIntPipe) id: number) {
+    //   return this.colaboradorService.delete(id)
+    // }
 }
