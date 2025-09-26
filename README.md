@@ -1,98 +1,126 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 📌 ConnectaRH – Sistema de Cadastro de Recursos Humanos
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### 📅 Data
+26/09/2025  
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📖 Descrição Geral
+O **ConnectaRH** é um sistema de gestão de cadastro de Recursos Humanos desenvolvido para otimizar a administração de informações de colaboradores dentro das organizações.  
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Seu principal objetivo é **centralizar, padronizar e automatizar o registro de dados**, garantindo maior eficiência, segurança e confiabilidade ao setor de RH.  
 
-## Project setup
+### Funcionalidades principais:
+- Cadastro completo de funcionários (dados pessoais, profissionais e contratuais).  
+- Pesquisa, edição, exclusão e histórico de alterações.  
+- Relatórios gerenciais para suporte à tomada de decisão.  
+- Redução de falhas manuais no registro de informações.  
+- Agilidade na busca e atualização de dados.  
+- Segurança da informação, com controle de acesso e auditoria.  
+- Integração futura com outros módulos de gestão (folha de pagamento, ponto eletrônico, benefícios etc.).  
 
+A principal entidade do sistema é o **Colaborador**, com os atributos:  
+- `id` → identificador único.  
+- `nome` → nome completo do colaborador.  
+- `cargo` → função desempenhada.  
+- `departamento` → setor em que trabalha.  
+- `salario` → remuneração correspondente.  
+
+O **ConnectaRH** implementa um **CRUD completo** para a entidade Colaborador, permitindo criar, listar, atualizar e excluir registros, além de consultas específicas por nome, cargo ou departamento.  
+
+O sistema foi desenvolvido utilizando **Node.js, NestJS, TypeORM, TypeScript** e banco de dados **PostgreSQL**, com o **Insomnia** para testes de API.  
+
+---
+
+## 📊 Diagrama da Entidade
+
+A entidade principal do sistema é **Colaborador**, representada pelo diagrama de classes abaixo:
+
+<img width="915" height="599" alt="Screenshot 2025-09-26 160308" src="https://github.com/user-attachments/assets/13a656d4-7d32-463e-a68a-ebc3789f1ec2" />
+
+---
+
+## 🚀 Tecnologias Utilizadas
+- Node.js  
+- NestJS  
+- TypeORM  
+- TypeScript  
+- Banco de dados: **PostgreSQL** (adaptável para MySQL, se necessário)  
+
+---
+
+## 📦 Pré-requisitos
+Antes de começar, certifique-se de ter instalado:  
+- **Git**  
+- **Node.js** (versão LTS recomendada)  
+- **NPM** ou **Yarn**  
+- **PostgreSQL** (ou outro banco configurado no `data-source.ts`)  
+
+---
+
+## ⚙️ Como rodar o projeto
+
+### 1. Clonar o repositório
 ```bash
-$ npm install
+git clone https://github.com/OxenteC0de/ConnectaRH
+cd ConnectaRH 
 ```
 
-## Compile and run the project
+### 2. Instalar as dependências
+npm install
 
+
+### 3. Configurar o banco de dados
+
+No arquivo data-source.ts ou app.module.ts, configure suas credenciais:
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+TypeOrmModule.forRoot({
+  type: 'postgres',
+  host: 'localhost',
+  port: 3360,
+  username: 'seu_usuario',
+  password: 'sua_senha',
+  database: 'nome_do_banco',
+  autoLoadEntities: true,
+  synchronize: true, // apenas em ambiente de desenvolvimento
+}),
 ```
 
-## Run tests
+⚠️ Dica: Crie o banco no PostgreSQL antes de rodar o projeto.
 
-```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+### 4. Rodar o projeto
+npm run start:dev
 
-# test coverage
-$ npm run test:cov
-```
+O servidor estará disponível em:
+👉 http://localhost:4000
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### ✅ Testes
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Utilize o Insomnia (ou Postman) para testar as rotas.
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+Já existe um arquivo de workspace do Insomnia (insomnia.json) dentro da pasta /docs → basta importar e clicar em Send (os testes já estão preenchidos).
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+### 👥 Equipe Responsável
 
-Check out a few resources that may come in handy when working with NestJS:
+#### OxenteCode
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Participantes:
 
-## Support
+David Barbosa – Criação endpoint PUT e GET findById()
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Dilvani – Criação endpoint DELETE
 
-## Stay in touch
+Janaína Bezerra – Criação endpoint POST
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Karine Santos – Criação do endpoint GetFindAll()
 
-## License
+Tauane Soares – Entidade e arquivo Insomnia
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+William Almeida – Scrum Master e responsável pelo merge do código
+
+Winnie Sant’Ana – Documentação e escopo do projeto
