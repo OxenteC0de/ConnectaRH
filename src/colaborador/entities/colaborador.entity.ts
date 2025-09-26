@@ -1,8 +1,8 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'tb_colaborador'})
-export class Collaborador {
+export class Colaborador {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -23,5 +23,4 @@ export class Collaborador {
     salario: number;
 
 }
-
-
+    
