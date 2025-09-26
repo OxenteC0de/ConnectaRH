@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Colaborador } from '../entities/colaborador.entity';
 import { Repository } from 'typeorm';
@@ -14,18 +14,24 @@ export class ColaboradorService {
   async findAll(): Promise<Colaborador[]> {
     return await this.colaboradorRepository.find();
   }
-    // async findById(id: number): Promise<Colaborador> {
-    //   const colaborador = await this.colaboradorRepository.findOne({
-    //     where: { id },
-    //   });
-    //   if (!colaborador) {
-    //     throw new HttpException(
-    //       'Colaborador não foi localizado!',
-    //       HttpStatus.NOT_FOUND,
-    //     );
-    //     return colaborador;
-    //   }
-    // }
+  async findById(id: number): Promise<Colaborador> {
+    const colaborador = await this.colaboradorRepository.findOne({
+      where: {'
+        id'
+      }
+    });
+    if (!colaborador)
+        throw new HttpException('Colaborador não localizado!', HttpStatus.NOT_FOUND);
+      return colaborador;
+  }
+
+  async update(colaborador: Colaborador): Promise<Colaborador>{
+    await this.findById(colaborador.id)
+
+    return await this.colaboradorRepository.save(colaborador);
+
+  }
+  
 
   // async delete(id: number): Promise<DeleteResult> {
   //   await this.findById(id);

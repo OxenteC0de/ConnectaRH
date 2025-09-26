@@ -12,16 +12,17 @@ export class ColaboradorController {
         return this.colaboradorService.findAll();
     }
     
-  //   @Get(':id')
-  //   async findByid(@Param('id')id: string): Promise<Colaborador>{
-  //       return wait this.colaboradorService.findById(Number(id));
-  // } 
+    @Get('/:id')
+    @HttpCode(HttpStatus.OK)
+    findById(@Param('id', ParseIntPipe) id: number): Promise<Colaborador>{
+      return this.colaboradorService.findById(id);
+    }
   
-    // @Put()
-    // @HttpCode(HttpStatus.ok)
-    // update(@Body() collaborador: Colaborador): Promise<Colaborador> {
-    //     return this.colaboradorService.update(collaborador);
-    // } 
+    @Put()
+    @HttpCode(HttpStatus.ok)
+    update(@Body() colaborador: Colaborador): Promise<Colaborador> {
+    return this.colaboradorService.update(colaborador);
+    } 
   
     // @Delete('/:id')
     // @HttpCode(HttpStatus.NO_CONTENT)
