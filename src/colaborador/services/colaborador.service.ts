@@ -1,3 +1,4 @@
+import { ColaboradorService } from './../../collaborador/services/postagem.service';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Colaborador } from '../entities/colaborador.entity';
@@ -30,5 +31,11 @@ export class ColaboradorService {
   async delete(id: number): Promise<DeleteResult> {
     await this.findById(id);
     return await this.colaboradorRepository.delete(id);
+
   }
-}
+  async create(colaborador: Colaborador): Promise<Colaborador>{
+    
+    return await this.colaboradorRepository.save(Colaborador);
+  }
+  }
+
