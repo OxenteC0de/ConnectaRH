@@ -32,6 +32,14 @@ O sistema foi desenvolvido utilizando **Node.js, NestJS, TypeORM, TypeScript** e
 
 ---
 
+## 📊 Diagrama da Entidade
+
+A entidade principal do sistema é **Colaborador**, representada pelo diagrama de classes abaixo:
+
+<img width="915" height="599" alt="Screenshot 2025-09-26 160308" src="https://github.com/user-attachments/assets/13a656d4-7d32-463e-a68a-ebc3789f1ec2" />
+
+---
+
 ## 🚀 Tecnologias Utilizadas
 - Node.js  
 - NestJS  
