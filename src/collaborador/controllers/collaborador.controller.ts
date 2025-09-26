@@ -1,12 +1,17 @@
 import { Controller } from "@nestjs/common";
-import {ColaboradorService} from '../services/postagem.service';
-import {Colaborador} from '../entities/colaborador.entity';
+import {CollaboradorService} from '../services/postagem.service';
+import {Collaborador} from '../entities/collaborador.entity';
 
-@Controller('colaboradores')
-export class Colaborador {
-    constructor(private readonly colaboradorService: ColaboradorService) {}
+@Controller('collaborador')
+export class Collaborador {
+    constructor(private readonly collaboradorService: CollaboradorService) {}
     @get(':id')
-    async findByid(@Param('id')id: string): Promise<Colaborador>{
-        return wait this.colaboradorService.findById(Number(id));
-    }  
+    async findByid(@Param('id')id: string): Promise<Collaborador>{
+        return wait this.collaboradorService.findById(Number(id));
+    } 
+    @put()
+    @HttpCode(HttpStatus.ok)
+    update(@Body() collaborador: Collaborador): Promise<Collaborador> {
+        return this.collaboradorService.update(collaborador);
+    } 
 }

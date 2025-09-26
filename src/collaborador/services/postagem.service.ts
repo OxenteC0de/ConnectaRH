@@ -1,25 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Colaborador } from '../controllers/colaborador.controller';
+import { Collaborador } from '../controllers/collaborador.controller';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class ColaboradorService {
+export class CollaboradorService {
   constructor(
-    @InjectRepository(Colaborador)
-    private collaboradorRepository: Repository<Colaborador>,
+    @InjectRepository(Collaborador)
+    private collaboradorRepository: Repository<Collaborador>,
   ) {}
 
-  async findById(id: number): Promise<Colaborador>{
-    const colaborador = await this.colaboradorRepository.findOne({
+  async findById(id: number): Promise<Collaborador>{
+    const collaborador = await this.collaboradorRepository.findOne({
       where: {id},
     });
-    if (!colaborador){
+    if (!collaborador){
       throw new HttpException('Colaborador não foi localizado!',
         HttpStatus.NOT_FOUND,
       );
-      return colaborador;
+      return collaborador;
     }
+  }
+  async update(collaborador: Collaborador): Promise<Collaborador>{
+    await this.findById(collaborador.id)
+    return await this.collaboradorRepository.save(collaborador);
   }
 
 }
