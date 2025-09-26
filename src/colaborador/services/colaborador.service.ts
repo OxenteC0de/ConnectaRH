@@ -13,4 +13,9 @@ export class ColaboradorService {
   async findAll(): Promise<Colaborador[]>{
     return await this.colaboradorRepository.find();
   }
+
+  // async delete(id: number): Promise<DeleteResult> {
+  //   await this.findById(id);
+  //   return await this.collaboradorRepository.delete(id);
+  // }
 }
